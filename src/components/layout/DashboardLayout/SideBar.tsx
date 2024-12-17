@@ -154,7 +154,7 @@ export function SideBar({ menus }: { menus: SidebarMenuType[] }) {
           </Center>
         ) : (
           <NavLink
-            bg="primary.0"
+            bg="var(--nl-bg)"
             leftSection={<Avatar />}
             label="Super Admin"
             rightSection={

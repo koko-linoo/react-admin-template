@@ -18,9 +18,7 @@ export const themeConfig: MantineThemeOverride = {
   },
   components: {
     Burger: {
-      defaultProps: {
-        color: "primary",
-      },
+      defaultProps: {},
     },
   },
 };
