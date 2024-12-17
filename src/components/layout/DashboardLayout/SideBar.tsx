@@ -9,6 +9,7 @@ import {
   Flex,
   HoverCard,
   NavLink,
+  Paper,
   ScrollArea,
   Stack,
   Text,
@@ -26,7 +27,9 @@ const SideBarMenuItem = ({
 }: SidebarMenuItemType) => {
   const location = useLocation();
 
-  const active = location.pathname === path;
+  const active =
+    location.pathname === path ||
+    (children && children.some((item) => item.path === location.pathname));
 
   const { opened, toggleSidebar } = useLayoutStore((state) => state);
 
@@ -43,6 +46,7 @@ const SideBarMenuItem = ({
           {isRoot ? (
             <Center py={8}>
               <ActionIcon
+                color={active ? "primary" : "gray"}
                 variant="transparent"
                 title={label}
                 component={Link}
@@ -56,6 +60,7 @@ const SideBarMenuItem = ({
               active={children ? false : active}
               miw={180}
               label={label}
+              title={label}
               component={Link}
               to={path!}
               rightSection={
@@ -98,6 +103,7 @@ const SideBarMenuItem = ({
         visibleFrom="sm"
         active={active}
         label={label}
+        title={label}
         leftSection={icon ?? <Box w={20} />}
         to={path!}
         component={Link}
@@ -107,6 +113,7 @@ const SideBarMenuItem = ({
         onClick={toggleSidebar}
         active={active}
         label={label}
+        title={label}
         leftSection={icon ?? <Box w={20} />}
         to={path!}
         component={Link}
@@ -122,7 +129,12 @@ export function SideBar({ menus }: { menus: SidebarMenuType[] }) {
     <AppShell.Navbar py="md">
       <AppShell.Section px="md">
         <Flex justify="space-between" align="center">
-          {!opened && <Text>POS ADMIN</Text>}
+          {!opened && (
+            <Flex gap="xs">
+              <Paper radius="sm" bg="primary.1" w={30} />
+              <Text>POS ADMIN</Text>
+            </Flex>
+          )}
           <Burger size="sm" opened={!opened} onClick={toggleSidebar} />
         </Flex>
       </AppShell.Section>

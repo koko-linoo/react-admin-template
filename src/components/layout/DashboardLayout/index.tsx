@@ -28,3 +28,5 @@ export default function DashboardLayout({ menus }: DashboardLayoutProps) {
     </AppShell>
   );
 }
+
+export { Header };
