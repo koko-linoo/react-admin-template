@@ -2,10 +2,15 @@ export {};
 
 declare global {
   type User = {
-    id: number;
-    name: string;
+    id: string;
     email: string;
-    password: string;
+    username: string;
+    fullName: string;
+    isDeleted: boolean;
+    createdAt: string;
+    updatedAt: string;
+    profileUrl: string;
+    roleId?: string;
   };
 
   type ApiResponse<T> = {

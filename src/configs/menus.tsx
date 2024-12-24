@@ -4,29 +4,29 @@ import { IconDashboard, IconReceipt, IconSettings } from "@tabler/icons-react";
 export const menus: SidebarMenuType[] = [
   {
     label: "Dashboard",
-    icon: <IconDashboard size={20} />,
+    icon: <IconDashboard size={16} />,
     path: "/",
   },
   {
     label: "Orders",
-    icon: <IconReceipt size={20} />,
+    icon: <IconReceipt size={16} />,
     path: "/orders",
   },
   {
     label: "Configurations",
-    icon: <IconSettings size={20} />,
+    icon: <IconSettings size={16} />,
     children: [
       {
         label: "Products",
-        path: "/products",
+        path: "/configurations/products",
       },
       {
         label: "Users",
-        path: "/users",
+        path: "/configurations/users",
       },
       {
         label: "Roles",
-        path: "/roles",
+        path: "/configurations/roles",
       },
     ],
   },

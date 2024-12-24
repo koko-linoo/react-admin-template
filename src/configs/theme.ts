@@ -20,5 +20,17 @@ export const themeConfig: MantineThemeOverride = {
     Burger: {
       defaultProps: {},
     },
+    NavLink: {
+      defaultProps: {
+        styles: {
+          root: {
+            padding: "4px 8px",
+          },
+          label: {
+            fontSize: 12,
+          },
+        },
+      },
+    },
   },
 };

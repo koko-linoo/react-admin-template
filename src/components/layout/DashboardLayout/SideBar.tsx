@@ -1,4 +1,6 @@
+import AvatarImg from "@/assets/images/avatar.png";
 import { useLayoutStore } from "@/components/layout/DashboardLayout/layout.store";
+import { HEADER_HEIGHT } from "@/configs/constants";
 import {
   ActionIcon,
   AppShell,
@@ -44,7 +46,7 @@ const SideBarMenuItem = ({
       >
         <HoverCard.Target>
           {isRoot ? (
-            <Center py={8}>
+            <Center py={4}>
               <ActionIcon
                 color={active ? "primary" : "gray"}
                 variant="transparent"
@@ -70,7 +72,7 @@ const SideBarMenuItem = ({
           )}
         </HoverCard.Target>
         <HoverCard.Dropdown p="0">
-          <Stack gap="0">
+          <Stack gap={2}>
             {children?.map((item) => (
               <SideBarMenuItem key={item.label} {...item} />
             ))}
@@ -90,9 +92,11 @@ const SideBarMenuItem = ({
         component={Link}
         defaultOpened={children.some((item) => item.path === location.pathname)}
       >
-        {children.map((item) => (
-          <SideBarMenuItem key={item.label} {...item} />
-        ))}
+        <Stack gap={2}>
+          {children.map((item) => (
+            <SideBarMenuItem key={item.label} {...item} />
+          ))}
+        </Stack>
       </NavLink>
     );
   }
@@ -104,7 +108,7 @@ const SideBarMenuItem = ({
         active={active}
         label={label}
         title={label}
-        leftSection={icon ?? <Box w={20} />}
+        leftSection={icon ?? <Box w={16} />}
         to={path!}
         component={Link}
       />
@@ -114,7 +118,7 @@ const SideBarMenuItem = ({
         active={active}
         label={label}
         title={label}
-        leftSection={icon ?? <Box w={20} />}
+        leftSection={icon ?? <Box w={16} />}
         to={path!}
         component={Link}
       />
@@ -126,26 +130,30 @@ export function SideBar({ menus }: { menus: SidebarMenuType[] }) {
   const { opened, toggleSidebar } = useLayoutStore();
 
   return (
-    <AppShell.Navbar py="md">
-      <AppShell.Section px="md">
-        <Flex justify="space-between" align="center">
+    <AppShell.Navbar>
+      <AppShell.Section px="xs" py="xs" h={HEADER_HEIGHT}>
+        <Flex
+          justify={!opened ? "space-between" : "center"}
+          align="center"
+          h="100%"
+        >
           {!opened && (
             <Flex gap="xs">
               <Paper radius="sm" bg="primary.1" w={30} />
               <Text>POS ADMIN</Text>
             </Flex>
           )}
-          <Burger size="sm" opened={!opened} onClick={toggleSidebar} />
+          <Burger size="xs" onClick={toggleSidebar} />
         </Flex>
       </AppShell.Section>
-      <AppShell.Section grow my="md" px="xs" component={ScrollArea}>
-        <Stack gap="2px">
+      <AppShell.Section grow my="xs" px="xs" component={ScrollArea}>
+        <Stack gap={2}>
           {menus.map((item) => (
             <SideBarMenuItem isRoot key={item.label} {...item} />
           ))}
         </Stack>
       </AppShell.Section>
-      <AppShell.Section px="sm">
+      <AppShell.Section px="sm" my="xs">
         {opened ? (
           <Center>
             <ActionIcon variant="transparent">
@@ -154,8 +162,7 @@ export function SideBar({ menus }: { menus: SidebarMenuType[] }) {
           </Center>
         ) : (
           <NavLink
-            bg="var(--nl-bg)"
-            leftSection={<Avatar />}
+            leftSection={<Avatar src={AvatarImg} bg="gray.2" />}
             label="Super Admin"
             rightSection={
               <ActionIcon variant="transparent">
