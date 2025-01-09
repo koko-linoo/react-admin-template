@@ -17,10 +17,20 @@ declare global {
     data: T;
   };
 
+  type ApiErrorResponse = {
+    message: string;
+    error: string;
+    status: number;
+  };
+
   type ApiResponseList<T> = {
     data: T[];
     totalCount: number;
     page: number;
     pageSize: number;
+  };
+
+  type LoginResponse = User & {
+    accessToken: string;
   };
 }
