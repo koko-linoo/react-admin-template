@@ -1,3 +1,4 @@
+import { useAuthStore } from "@/stores/auth.store";
 import {
   Anchor,
   Button,
@@ -11,10 +12,13 @@ import {
   Title,
 } from "@mantine/core";
 import { useForm } from "@mantine/form";
+import { Navigate } from "react-router";
 import { useLogin } from "./queries";
 
 export default function Login() {
-  const { isPending, mutate } = useLogin();
+  const { user, login } = useAuthStore((state) => state);
+
+  const { isPending, mutateAsync } = useLogin();
 
   const form = useForm({
     initialValues: {
@@ -27,10 +31,19 @@ export default function Login() {
     },
   });
 
+  const onSubmit = (values: Record<string, unknown>) => {
+    mutateAsync(values).then((response) => {
+      login(response.data);
+      form.reset();
+    });
+  };
+
+  if (user) return <Navigate to="/dashboard" />;
+
   return (
     <Center w="100vw" h="100vh">
       <Paper p="xl" w={340} radius="xl">
-        <form onSubmit={form.onSubmit((values) => mutate(values))}>
+        <form onSubmit={form.onSubmit(onSubmit)}>
           <Stack>
             <Flex align="baseline" justify="center">
               <Title c="primary">A</Title>

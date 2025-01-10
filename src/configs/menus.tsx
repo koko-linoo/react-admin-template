@@ -5,12 +5,12 @@ export const menus: SidebarMenuType[] = [
   {
     label: "Dashboard",
     icon: <IconDashboard size={16} />,
-    path: "/",
+    path: "/dashboard",
   },
   {
     label: "Orders",
     icon: <IconReceipt size={16} />,
-    path: "/orders",
+    path: "/dashboard/orders",
   },
   {
     label: "Configurations",
@@ -18,15 +18,15 @@ export const menus: SidebarMenuType[] = [
     children: [
       {
         label: "Products",
-        path: "/configurations/products",
+        path: "/dashboard/configurations/products",
       },
       {
         label: "Users",
-        path: "/configurations/users",
+        path: "/dashboard/configurations/users",
       },
       {
         label: "Roles",
-        path: "/configurations/roles",
+        path: "/dashboard/configurations/roles",
       },
     ],
   },

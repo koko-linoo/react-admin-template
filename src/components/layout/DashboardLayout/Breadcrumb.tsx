@@ -3,7 +3,9 @@ import { Link, useLocation } from "react-router";
 
 export function Breadcrumb() {
   const location = useLocation();
-  const paths = [...new Set(location.pathname.split("/"))];
+  const paths = [...new Set(location.pathname.split("/"))].filter(
+    (path) => path
+  );
 
   return (
     <Breadcrumbs separatorMargin={4} separator=">" fz={10}>
@@ -23,7 +25,7 @@ export function Breadcrumb() {
             size="xs"
             fs="italic"
             component={Link}
-            to={`${paths.slice(0, index + 1).join("/")}`}
+            to={`${paths.slice(1, index + 1).join("/")}`}
           >
             {path ? path : "Dashboard"}
           </Anchor>

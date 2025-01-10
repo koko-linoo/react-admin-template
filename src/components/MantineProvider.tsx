@@ -1,6 +1,7 @@
 import "@mantine/core/styles.css";
 import "@mantine/dates/styles.css";
 import "@mantine/notifications/styles.css";
+import "mantine-react-table/styles.css";
 
 import { themeConfig } from "@/configs/theme";
 import { createTheme, MantineProvider as Provider } from "@mantine/core";

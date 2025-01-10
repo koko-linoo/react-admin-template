@@ -1,4 +1,5 @@
 import AvatarImg from "@/assets/images/avatar.png";
+import { LogoutButton } from "@/components/cores/buttons/LogoutButton";
 import { useLayoutStore } from "@/components/layout/DashboardLayout/layout.store";
 import { HEADER_HEIGHT } from "@/configs/constants";
 import {
@@ -16,7 +17,7 @@ import {
   Stack,
   Text,
 } from "@mantine/core";
-import { IconChevronRight, IconPower } from "@tabler/icons-react";
+import { IconChevronRight } from "@tabler/icons-react";
 import { Link, useLocation } from "react-router";
 import { SidebarMenuItemType, SidebarMenuType } from "./types";
 
@@ -156,19 +157,13 @@ export function SideBar({ menus }: { menus: SidebarMenuType[] }) {
       <AppShell.Section px="sm" my="xs">
         {opened ? (
           <Center>
-            <ActionIcon variant="transparent">
-              <IconPower />
-            </ActionIcon>
+            <LogoutButton />
           </Center>
         ) : (
           <NavLink
             leftSection={<Avatar src={AvatarImg} bg="gray.2" />}
             label="Super Admin"
-            rightSection={
-              <ActionIcon variant="transparent">
-                <IconPower />
-              </ActionIcon>
-            }
+            rightSection={<LogoutButton />}
           />
         )}
       </AppShell.Section>

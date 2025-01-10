@@ -19,14 +19,22 @@ export function getTableOption<T extends Record<string, any>>() {
     mantineTableProps: {
       highlightOnHover: true,
     },
-    mantineTableBodyCellProps: {
+    mantineTableHeadCellProps: {
+      fw: "bolder",
       fz: "xs",
+      c: "gray",
+    },
+    mantineTableBodyCellProps: {
+      fz: "sm",
       py: "8px",
       fw: 400,
     },
     mantineTableContainerProps: {
       mah: "calc(100vh - 13.5rem)",
       miw: "calc(100vw - 2rem - 250px)",
+      style: {
+        scrollbarWidth: "thin",
+      },
     },
   };
 

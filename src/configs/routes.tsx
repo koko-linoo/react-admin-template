@@ -7,13 +7,19 @@ import ProductList from "@/pages/configurations/products/List";
 import RoleList from "@/pages/configurations/roles/List";
 import UserList from "@/pages/configurations/users/LIst";
 import Dashboard from "@/pages/dashboard/Dashboard";
+import NotFoundPage from "@/pages/NotfoundPage";
 import OrderList from "@/pages/orders/List";
+import WelcomePage from "@/pages/WelcomePage";
 import { createBrowserRouter, Outlet } from "react-router-dom";
 import { menus } from "./menus";
 
 export const router = createBrowserRouter([
   {
     path: "/",
+    element: <WelcomePage />,
+  },
+  {
+    path: "/dashboard",
     element: <DashboardLayout menus={menus} />,
     errorElement: <ErrorPage />,
     children: [
@@ -22,7 +28,7 @@ export const router = createBrowserRouter([
         element: <Dashboard />,
       },
       {
-        path: "/orders",
+        path: "orders",
         element: <OrderList />,
       },
       {
@@ -61,5 +67,9 @@ export const router = createBrowserRouter([
   {
     path: "/login",
     element: <Login />,
+  },
+  {
+    path: "*",
+    element: <NotFoundPage />,
   },
 ]);

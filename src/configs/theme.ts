@@ -1,9 +1,9 @@
 import { generateColors } from "@mantine/colors-generator";
 import { MantineThemeOverride } from "@mantine/core";
 export const themeConfig: MantineThemeOverride = {
-  primaryColor: "cyan",
+  primaryColor: "primary",
   colors: {
-    primary: generateColors("cyan"),
+    primary: generateColors("indigo"),
   },
   components: {
     Burger: {
