@@ -1,5 +1,5 @@
 import api from "@/configs/api";
 
 export function getUsers(params?: Record<string, unknown>) {
-  return api.post<ApiResponseList<User>>("/users", { params });
+  return api.get<ApiResponseList<User>>("/users", { params });
 }

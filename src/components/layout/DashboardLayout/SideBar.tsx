@@ -1,11 +1,11 @@
-import AvatarImg from "@/assets/images/avatar.png";
 import { LogoutButton } from "@/components/cores/buttons/LogoutButton";
+import UserAvatar from "@/components/cores/UserAvatar";
 import { useLayoutStore } from "@/components/layout/DashboardLayout/layout.store";
 import { HEADER_HEIGHT } from "@/configs/constants";
+import { useAuthStore } from "@/stores/auth.store";
 import {
   ActionIcon,
   AppShell,
-  Avatar,
   Box,
   Burger,
   Center,
@@ -130,6 +130,8 @@ const SideBarMenuItem = ({
 export function SideBar({ menus }: { menus: SidebarMenuType[] }) {
   const { opened, toggleSidebar } = useLayoutStore();
 
+  const user = useAuthStore((state) => state.user);
+
   return (
     <AppShell.Navbar>
       <AppShell.Section px="xs" py="xs" h={HEADER_HEIGHT}>
@@ -161,8 +163,8 @@ export function SideBar({ menus }: { menus: SidebarMenuType[] }) {
           </Center>
         ) : (
           <NavLink
-            leftSection={<Avatar src={AvatarImg} bg="gray.2" />}
-            label="Super Admin"
+            leftSection={<UserAvatar />}
+            label={user?.fullName}
             rightSection={<LogoutButton />}
           />
         )}

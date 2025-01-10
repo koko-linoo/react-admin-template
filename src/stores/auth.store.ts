@@ -3,8 +3,8 @@ import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
 export interface AuthStore {
-  user?: User;
-  login: (user: User) => void;
+  user?: LoginResponse;
+  login: (user: LoginResponse) => void;
   logout: () => void;
 }
 
