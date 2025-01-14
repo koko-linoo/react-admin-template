@@ -13,6 +13,11 @@ import { createRoot } from "react-dom/client";
 import { RouterProvider } from "react-router-dom";
 
 const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      refetchOnWindowFocus: false,
+    },
+  },
   queryCache: new QueryCache({
     onError: (error) => {
       const res = error as AxiosError<ApiErrorResponse>;

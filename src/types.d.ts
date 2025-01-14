@@ -11,6 +11,12 @@ declare global {
     updatedAt: string;
     profileUrl: string;
     roleId?: string;
+    role?: Role;
+  };
+
+  type Role = {
+    id: string;
+    name: string;
   };
 
   type ApiResponse<T> = {
@@ -32,5 +38,24 @@ declare global {
 
   type LoginResponse = User & {
     accessToken: string;
+  };
+
+  type ChatRoom = {
+    id: string;
+    name: string;
+    userList: string;
+    createdAt: string;
+    updatedAt: string;
+    messages: Message[];
+  };
+
+  type Message = {
+    id: string;
+    user: User;
+    message: string;
+    userId: string;
+    createdAt: string;
+    updatedAt: string;
+    chatRoomId: string;
   };
 }

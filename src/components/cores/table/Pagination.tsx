@@ -15,13 +15,11 @@ export function Pagination({ total = 1 }: { total: number }) {
   return (
     <>
       <Divider />
-      <Group justify="flex-end" p="sm">
+      <Group justify="flex-end" px="sm" py="xs">
         <Box>
           Total : <b>{total}</b>
         </Box>
-        <Box hiddenFrom="xs">
-          <PageSizeSelect />
-        </Box>
+        <PageSizeSelect />
         <MantinePagination
           size="xs"
           radius="xl"

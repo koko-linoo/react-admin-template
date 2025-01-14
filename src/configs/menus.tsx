@@ -1,5 +1,10 @@
 import { SidebarMenuType } from "@/components/layout/DashboardLayout/types";
-import { IconDashboard, IconReceipt, IconSettings } from "@tabler/icons-react";
+import {
+  IconDashboard,
+  IconMessageCircle,
+  IconReceipt,
+  IconSettings,
+} from "@tabler/icons-react";
 
 export const menus: SidebarMenuType[] = [
   {
@@ -11,6 +16,11 @@ export const menus: SidebarMenuType[] = [
     label: "Orders",
     icon: <IconReceipt size={16} />,
     path: "/dashboard/orders",
+  },
+  {
+    label: "Chats",
+    icon: <IconMessageCircle size={16} />,
+    path: "/dashboard/chats",
   },
   {
     label: "Configurations",

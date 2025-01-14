@@ -1,6 +1,6 @@
 import DashboardLayout from "@/components/layout/DashboardLayout";
-import { ErrorPage } from "@/components/pages/ErrorPage";
 import Login from "@/pages/auth/Login";
+import ChattingPage, { ChatRoom } from "@/pages/chats";
 import ModuleList from "@/pages/configurations/modules/List";
 import ProductDetail from "@/pages/configurations/products/Detail";
 import ProductList from "@/pages/configurations/products/List";
@@ -21,7 +21,6 @@ export const router = createBrowserRouter([
   {
     path: "/dashboard",
     element: <DashboardLayout menus={menus} />,
-    errorElement: <ErrorPage />,
     children: [
       {
         index: true,
@@ -30,6 +29,14 @@ export const router = createBrowserRouter([
       {
         path: "orders",
         element: <OrderList />,
+      },
+      {
+        path: "chats",
+        element: <ChattingPage />,
+      },
+      {
+        path: "chats/:id",
+        element: <ChatRoom />,
       },
       {
         path: "configurations",

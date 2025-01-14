@@ -1,5 +1,6 @@
+import { NotificationButton } from "@/components/cores/buttons/NotificationButton";
 import { ThemeButton } from "@/components/cores/buttons/ThemeButton";
-import { AppShell, Box, Burger, Flex } from "@mantine/core";
+import { AppShell, Box, Burger, Flex, Group } from "@mantine/core";
 import { Breadcrumb } from "./Breadcrumb";
 import { useLayoutStore } from "./layout.store";
 
@@ -16,7 +17,10 @@ export function Header({ title }: { title?: React.ReactNode }) {
         />
         <Flex justify="space-between" align="center" w="100%">
           <Box>{title ?? <Breadcrumb />}</Box>
-          <ThemeButton />
+          <Group>
+            <NotificationButton />
+            <ThemeButton />
+          </Group>
         </Flex>
       </Flex>
     </AppShell.Header>
