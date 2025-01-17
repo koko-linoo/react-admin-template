@@ -1,22 +1,11 @@
 import { SearchInput } from "@/components/cores/filters/SearchInput";
 import { DataTable } from "@/components/cores/table/DataTable";
 import { ERROR_COLOR, SUCCESS_COLOR } from "@/configs/constants";
-import {
-  ActionIcon,
-  Button,
-  Flex,
-  Group,
-  Menu,
-  Stack,
-  Text,
-  Title,
-} from "@mantine/core";
-import {
-  IconCircleFilled,
-  IconDotsVertical,
-  IconPlus,
-} from "@tabler/icons-react";
+import { Flex, Group, Stack, Text, Title } from "@mantine/core";
+import { IconCircleFilled } from "@tabler/icons-react";
 import { MRT_ColumnDef } from "mantine-react-table";
+import { CreateUser } from "./Create";
+import { EditUser } from "./Edit";
 import { useGetUsers } from "./queries";
 
 const columns: MRT_ColumnDef<User>[] = [
@@ -59,6 +48,18 @@ const columns: MRT_ColumnDef<User>[] = [
       );
     },
   },
+  {
+    accessorKey: "actions",
+    header: "Actions",
+    size: 60,
+    Cell: ({ row }) => {
+      return (
+        <Group>
+          <EditUser user={row.original} />
+        </Group>
+      );
+    },
+  },
 ];
 
 export default function UserList() {
@@ -70,20 +71,7 @@ export default function UserList() {
         <Title order={3}>Users</Title>
         <Flex gap="xs" align="center">
           <SearchInput />
-          <Button leftSection={<IconPlus />} size="xs">
-            Add User
-          </Button>
-          <Menu>
-            <Menu.Target>
-              <ActionIcon variant="transparent" size="xs">
-                <IconDotsVertical />
-              </ActionIcon>
-            </Menu.Target>
-            <Menu.Dropdown>
-              <Menu.Item>Edit</Menu.Item>
-              <Menu.Item>Delete</Menu.Item>
-            </Menu.Dropdown>
-          </Menu>
+          <CreateUser />
         </Flex>
       </Group>
       <DataTable<User>

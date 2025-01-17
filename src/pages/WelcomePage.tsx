@@ -1,8 +1,15 @@
+import { useAuthStore } from "@/stores/auth.store";
 import { Button, Center, Stack, Title } from "@mantine/core";
 import { IconArrowRight } from "@tabler/icons-react";
-import { Link } from "react-router";
+import { Link, Navigate } from "react-router";
 
 export default function WelcomePage() {
+  const user = useAuthStore((state) => state.user);
+
+  if (user) {
+    return <Navigate to="/dashboard" />;
+  }
+
   return (
     <Center h="100vh" w="100vw">
       <Stack align="center">

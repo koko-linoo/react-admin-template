@@ -6,6 +6,14 @@ export const userKeys = {
   detail: (id: number) => [...userKeys.details(), id] as const,
 };
 
+export const roleKeys = {
+  all: ["roles"] as const,
+  lists: () => [...roleKeys.all, "list"] as const,
+  listFilter: (filters: string) => [...roleKeys.lists(), { filters }] as const,
+  details: () => [...roleKeys.all, "detail"] as const,
+  detail: (id: string) => [...roleKeys.details(), id] as const,
+};
+
 export const chatRoomKeys = {
   all: ["chatRooms"] as const,
   lists: () => [...chatRoomKeys.all, "list"] as const,

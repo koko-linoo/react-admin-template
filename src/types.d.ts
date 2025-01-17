@@ -1,24 +1,6 @@
 export {};
 
 declare global {
-  type User = {
-    id: string;
-    email: string;
-    username: string;
-    fullName: string;
-    isDeleted: boolean;
-    createdAt: string;
-    updatedAt: string;
-    profileUrl: string;
-    roleId?: string;
-    role?: Role;
-  };
-
-  type Role = {
-    id: string;
-    name: string;
-  };
-
   type ApiResponse<T> = {
     data: T;
   };
@@ -38,6 +20,25 @@ declare global {
 
   type LoginResponse = User & {
     accessToken: string;
+  };
+
+  type User = {
+    id: string;
+    email: string;
+    username: string;
+    fullName: string;
+    isDeleted: boolean;
+    createdAt: string;
+    updatedAt: string;
+    profileUrl: string;
+    roleId?: string;
+    role?: Role;
+  };
+
+  type Role = {
+    id: string;
+    name: string;
+    description?: string;
   };
 
   type ChatRoom = {
