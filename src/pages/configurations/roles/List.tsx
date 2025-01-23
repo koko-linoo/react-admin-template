@@ -1,8 +1,10 @@
 import { SearchInput } from "@/components/cores/filters/SearchInput";
 import { DataTable } from "@/components/cores/table/DataTable";
-import { ActionIcon, Button, Flex, Group, Stack, Title } from "@mantine/core";
-import { IconEdit, IconLock, IconPlus } from "@tabler/icons-react";
+import { ActionIcon, Flex, Group, Stack, Title } from "@mantine/core";
+import { IconLock } from "@tabler/icons-react";
 import { MRT_ColumnDef } from "mantine-react-table";
+import { Link } from "react-router";
+import { CreateRoleForm, EditRoleForm } from "./Form";
 import { useGetRoles } from "./quries";
 
 const columns: MRT_ColumnDef<Role>[] = [
@@ -10,9 +12,14 @@ const columns: MRT_ColumnDef<Role>[] = [
     accessorKey: "permission",
     header: "Permissions",
     size: 100,
-    Cell: () => {
+    Cell: ({ row }) => {
       return (
-        <ActionIcon variant="transparent" size="sm">
+        <ActionIcon
+          component={Link}
+          variant="transparent"
+          size="sm"
+          to={`/dashboard/configurations/roles/${row.original.id}`}
+        >
           <IconLock />
         </ActionIcon>
       );
@@ -33,12 +40,8 @@ const columns: MRT_ColumnDef<Role>[] = [
     accessorKey: "actions",
     header: "Actions",
     size: 40,
-    Cell: () => {
-      return (
-        <ActionIcon variant="transparent" size="sm">
-          <IconEdit />
-        </ActionIcon>
-      );
+    Cell: ({ row }) => {
+      return <EditRoleForm data={row.original} />;
     },
   },
 ];
@@ -52,9 +55,7 @@ export default function RoleList() {
         <Title order={3}>Roles</Title>
         <Flex gap="xs" align="center">
           <SearchInput />
-          <Button leftSection={<IconPlus />} size="xs">
-            Add New Role
-          </Button>
+          <CreateRoleForm />
         </Flex>
       </Group>
       <DataTable<Role>

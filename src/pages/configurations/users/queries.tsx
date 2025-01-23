@@ -1,6 +1,6 @@
 import { userKeys } from "@/configs/queryKeys";
 import { useParamsHelper } from "@/hooks/useParamHelper";
-import { createUser, getUsers } from "@/services/user.service";
+import { createUser, getUsers, updateUser } from "@/services/user.service";
 import { notifications } from "@mantine/notifications";
 import { IconCheck } from "@tabler/icons-react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
@@ -43,7 +43,8 @@ export function useUpdateUser() {
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: (values: Record<string, unknown>) => createUser(values),
+    mutationFn: (values: Record<string, unknown>) =>
+      updateUser(values.id as string, values),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: userKeys.all });
 

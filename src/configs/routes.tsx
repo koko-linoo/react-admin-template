@@ -63,6 +63,10 @@ export const router = createBrowserRouter([
             path: "roles",
             element: <RoleList />,
           },
+          {
+            path: "roles/:id",
+            element: <ModuleList />,
+          },
         ],
       },
       {

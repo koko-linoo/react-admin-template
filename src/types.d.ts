@@ -39,6 +39,7 @@ declare global {
     id: string;
     name: string;
     description?: string;
+    permissions: Permission[];
   };
 
   type ChatRoom = {
@@ -58,5 +59,23 @@ declare global {
     createdAt: string;
     updatedAt: string;
     chatRoomId: string;
+  };
+
+  type Permission = {
+    id?: string;
+    module: string;
+    action: string;
+  };
+
+  type Module = {
+    id: string;
+    name: string;
+    actions: Action[];
+  };
+
+  type Action = {
+    id: string;
+    name: string;
+    moduleId: string;
   };
 }

@@ -7,3 +7,7 @@ export function getUsers(params?: Record<string, unknown>) {
 export function createUser(values: Record<string, unknown>) {
   return api.post<ApiResponse<User>>("/users", values);
 }
+
+export function updateUser(id: string, values: Record<string, unknown>) {
+  return api.patch<ApiResponse<User>>(`/users/${id}`, values);
+}

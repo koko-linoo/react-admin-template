@@ -10,7 +10,13 @@ export function EditUser(props: { user: User }) {
   const { isPending, mutateAsync } = useUpdateUser();
 
   const onSubmit = (values: Record<string, unknown>) => {
-    mutateAsync(values).then(() => close());
+    mutateAsync({
+      id: props.user.id,
+      fullName: values.fullName,
+      username: values.username,
+      email: values.email,
+      roleId: values.roleId,
+    }).then(() => close());
   };
 
   return (

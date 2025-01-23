@@ -1,16 +1,10 @@
 import { RoleSelect } from "@/components/cores/selects/RoleSelect";
+import { FormProps } from "@/pages/props";
 import { Button, Group, PasswordInput, Stack, TextInput } from "@mantine/core";
 import { useForm, zodResolver } from "@mantine/form";
 import { userCreateSchema, userEditSchema } from "./schema";
 
-export type UserFormProps = {
-  loading?: boolean;
-  onSubmit: (values: Record<string, unknown>) => void;
-  onCancel: () => void;
-  initialValues?: Record<string, unknown>;
-};
-
-export function UserForm(props: UserFormProps) {
+export function UserForm(props: FormProps) {
   const form = useForm({
     initialValues: props.initialValues ?? {
       fullName: "",
@@ -37,7 +31,6 @@ export function UserForm(props: UserFormProps) {
           placeholder="Enter your username"
           {...form.getInputProps("username")}
         />
-
         <TextInput
           label="Email"
           placeholder="Enter your email"

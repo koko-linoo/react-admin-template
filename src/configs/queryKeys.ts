@@ -22,3 +22,7 @@ export const chatRoomKeys = {
   details: () => [...chatRoomKeys.all, "detail"] as const,
   detail: (id: string) => [...chatRoomKeys.details(), id] as const,
 };
+
+export const moduleKeys = {
+  all: ["modules"] as const,
+};

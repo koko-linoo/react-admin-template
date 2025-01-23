@@ -44,8 +44,6 @@ export function useChat() {
 
   useEffect(() => {
     if (ref.current) {
-      console.log(ref.current);
-
       ref.current.scrollIntoView({ behavior: "auto" });
     }
   }, [messages]);
