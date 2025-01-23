@@ -11,13 +11,14 @@ import {
 } from "@mantine/core";
 import { CreateModuleForm } from "./Form";
 import { useModuleList } from "./hooks";
+import { Link } from "react-router";
 
 export default function ModuleList() {
   const {
     isLoading,
     isUpdating,
-    permissions,
     modules,
+    isChecked,
     handleChange,
     handleSubmit,
   } = useModuleList();
@@ -43,16 +44,11 @@ export default function ModuleList() {
                 <Flex gap="xs" align="center">
                   {module.actions.map((action) => (
                     <Checkbox
-                      checked={Boolean(
-                        permissions.find(
-                          (x) =>
-                            x.action === action.name && x.module === module.name
-                        )
-                      )}
                       size="xs"
                       key={action.id}
                       label={action.name}
                       value={action.name}
+                      checked={isChecked(action, module.name)}
                       onChange={handleChange(module.name)}
                     />
                   ))}
@@ -61,7 +57,13 @@ export default function ModuleList() {
               </Stack>
             ))}
             <Group justify="end" mt="md">
-              <Button variant="outline">Cancel</Button>
+              <Button
+                variant="outline"
+                component={Link}
+                to="/Dashboard/configurations/roles"
+              >
+                Cancel
+              </Button>
               <Button loading={isUpdating} onClick={handleSubmit}>
                 Save
               </Button>

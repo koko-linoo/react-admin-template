@@ -15,10 +15,12 @@ export function useModuleList() {
 
   const handleSubmit = () => mutate({ roleId: id as string, permissions });
 
+  // set permissions from api data
   useEffect(() => {
     setPermissions(roleDetails?.data?.permissions ?? []);
   }, [roleDetails.data?.permissions]);
 
+  // check change
   const handleChange =
     (module: string) => (e: ChangeEvent<HTMLInputElement>) => {
       const action = e.target.value;
@@ -33,13 +35,16 @@ export function useModuleList() {
       }
     };
 
+  const isChecked = (action: Action, module: string) =>
+    !!permissions.find((x) => x.action === action.name && x.module === module);
+
   return {
     isUpdating,
-    handleSubmit,
     isLoading: roleDetails.isLoading || modules.isLoading,
     role: roleDetails.data,
-    permissions,
     modules: modules.data ?? [],
+    isChecked,
+    handleSubmit,
     handleChange,
   };
 }
