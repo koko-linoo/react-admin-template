@@ -6,7 +6,7 @@ import { useChatRoomDetail } from "./quries";
 
 export function useChat() {
   const { id } = useParams();
-  const socket = io("http://10.11.106.212:3002");
+  const socket = io(import.meta.env.VITE_WS_URL);
 
   const ref = useRef<HTMLDivElement>(null);
 

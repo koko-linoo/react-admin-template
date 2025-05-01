@@ -5,9 +5,8 @@ import { Navigate, Outlet } from "react-router-dom";
 import { Header } from "./Header";
 import { useLayoutStore } from "./layout.store";
 import { SideBar } from "./SideBar";
-import { DashboardLayoutProps } from "./types";
 
-export default function DashboardLayout({ menus }: DashboardLayoutProps) {
+export default function DashboardLayout() {
   const user = useAuthStore((state) => state.user);
 
   const opened = useLayoutStore((state) => !state.opened);
@@ -26,7 +25,7 @@ export default function DashboardLayout({ menus }: DashboardLayoutProps) {
       padding="md"
     >
       <Header />
-      <SideBar menus={menus} />
+      <SideBar />
       <AppShell.Main>
         <Outlet />
       </AppShell.Main>

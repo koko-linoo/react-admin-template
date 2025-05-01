@@ -1,7 +1,3 @@
-export type DashboardLayoutProps = {
-  menus: SidebarMenuType[];
-};
-
 export type SidebarMenuItemType = {
   label: string;
   icon?: React.ReactNode;

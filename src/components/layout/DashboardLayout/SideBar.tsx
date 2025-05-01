@@ -19,7 +19,8 @@ import {
 } from "@mantine/core";
 import { IconChevronRight } from "@tabler/icons-react";
 import { Link, useLocation } from "react-router";
-import { SidebarMenuItemType, SidebarMenuType } from "./types";
+import { SidebarMenuItemType } from "./types";
+import { menus } from "@/configs/menus";
 
 const SideBarMenuItem = ({
   label,
@@ -127,7 +128,7 @@ const SideBarMenuItem = ({
   );
 };
 
-export function SideBar({ menus }: { menus: SidebarMenuType[] }) {
+export function SideBar() {
   const { opened, toggleSidebar } = useLayoutStore();
 
   const user = useAuthStore((state) => state.user);

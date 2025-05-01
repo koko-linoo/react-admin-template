@@ -11,6 +11,7 @@ export function useGetUsers() {
   const query = {
     search: getParam("search") ?? undefined,
     page: getParam("page") ?? undefined,
+    limit: getParam("limit") ?? undefined,
   };
 
   return useQuery({

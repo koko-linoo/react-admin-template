@@ -8,6 +8,6 @@ export function getChatroomDetail(id: string) {
   return api.get<ChatRoom>(`/chat-rooms/${id}`);
 }
 
-export function createChatRoom(data: { name: string }) {
+export function createChatRoom(data: Record<string, unknown>) {
   return api.post<ChatRoom>("/chat-rooms", data);
 }
